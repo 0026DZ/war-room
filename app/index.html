@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:">
+<title>War Room</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="bar">
+  <div class="brand"><b>WAR ROOM</b><span id="date" class="dim"></span></div>
+  <div class="tape" id="tape"></div>
+  <div class="clocks"><span><i>LOCAL</i><b id="ck-local">--:--:--</b></span><span><i>UTC</i><b id="ck-utc">--:--:--</b></span></div>
+  <div class="tools">
+    <span id="sync" class="dim"></span>
+    <button type="button" id="refresh" class="key">REFRESH</button>
+    <div class="seg" role="group" aria-label="News language"><button type="button" class="key" data-lang="en">EN</button><button type="button" class="key" data-lang="zh">中文</button></div>
+    <button type="button" id="mode" class="key"></button>
+    <button type="button" id="hide" class="key" title="Hide. Bring back with Ctrl+Alt+W or the tray icon.">HIDE</button>
+    <button type="button" id="quit" class="key">QUIT</button>
+  </div>
+</header>
+<main>
+  <section class="col" id="left">
+    <button type="button" class="panel" id="operator" title="Open the path"></button>
+    <form class="panel add" id="addf">
+      <span class="prompt" aria-hidden="true">&gt;</span>
+      <input type="text" id="n-title" placeholder="New objective. Enter to commit." aria-label="Task title" required>
+      <select id="n-cat" aria-label="Category"></select>
+      <input type="date" id="n-due" aria-label="Due date">
+      <input type="time" id="n-time" aria-label="Time">
+      <select id="n-pri" aria-label="Priority"><option value="">NORMAL</option><option value="high">HIGH</option><option value="low">LOW</option></select>
+      <select id="n-rep" aria-label="Repeat"><option value="">ONCE</option><option value="daily">DAILY</option><option value="weekdays">WEEKDAYS</option><option value="weekly">WEEKLY</option><option value="monthly">MONTHLY</option></select>
+      <button type="submit" class="solid">ADD</button>
+    </form>
+    <div class="chips" id="chips" role="group" aria-label="Filter by category"></div>
+    <div class="panel grow" id="queue"></div>
+  </section>
+  <section class="col" id="right">
+    <div class="markets" id="markets"></div>
+    <div class="panel" id="bias"></div>
+    <div class="panel grow" id="intel"></div>
+    <div class="panel" id="intake"></div>
+  </section>
+</main>
+<section id="path" hidden></section>
+<div id="toast" role="status" aria-live="polite"></div>
+<script src="app.js"></script>
+</body>
+</html>

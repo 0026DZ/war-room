@@ -1,0 +1,46 @@
+{
+  "name": "war-room",
+  "productName": "War Room",
+  "version": "2.0.0",
+  "description": "A desktop control panel for your day: tasks with levels, market tape, hourly candles and a keyword news feed.",
+  "license": "MIT",
+  "author": "War Room contributors",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "node test.js",
+    "dist": "electron-builder --dir",
+    "release": "electron-builder --publish never"
+  },
+  "devDependencies": {
+    "electron": "^45.0.0",
+    "electron-builder": "^26.0.0"
+  },
+  "build": {
+    "appId": "app.warroom.desktop",
+    "files": [
+      "main.js",
+      "preload.js",
+      "lib/**",
+      "app/**"
+    ],
+    "mac": {
+      "target": "dmg",
+      "category": "public.app-category.productivity"
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "zip"
+      ]
+    },
+    "nsis": {
+      "oneClick": true,
+      "createDesktopShortcut": true
+    },
+    "linux": {
+      "target": "AppImage",
+      "category": "Office"
+    }
+  }
+}
